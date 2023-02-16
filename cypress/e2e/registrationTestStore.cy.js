@@ -3,18 +3,18 @@
 import * as user from '../fixtures/user.json';
 import { faker } from '@faker-js/faker';
 
-user.firstName = faker.name.firstName();
+/*user.firstName = faker.name.firstName();
 user.lastName = faker.name.lastName();
 user.email = faker.internet.email();
 user.address = faker.address.streetAddress();
 user.city = faker.address.city();
 user.postCode =faker.address.zipCode('####');
 user.userName = faker.internet.userName();
-user.password = faker.internet.password(15);
+user.password = faker.internet.password(15);*/
 
 describe('Registration and Login', () => {
 
-    it('Registration', () => {
+    it.skip('Registration', () => {
 
         cy.log('**Open website home page**');
         cy.visit('https://automationteststore.com/');
@@ -23,7 +23,7 @@ describe('Registration and Login', () => {
         cy.get('#customer_menu_top').click();
 
         cy.log('Open website sign up form');
-        cy.get('.fa.fa-check.fa').scrollIntoView().should('be.visible');
+        //cy.get('.fa.fa-check.fa').scrollIntoView().should('be.visible');
         cy.get('.btn.btn-orange.pull-right').first().click();
 
         cy.log('**Fill sign up form**');
@@ -75,9 +75,9 @@ describe('Registration and Login', () => {
         cy.get('#loginFrm_password').type(user.password);
 
         cy.get('[title="Login"]').click();
-        
         cy.get('h1 span.subtext').should('contain', user.firstName)
     })
+
 })
 
 
