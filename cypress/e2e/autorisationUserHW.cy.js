@@ -7,7 +7,7 @@ describe('Autorisation User', () => {
     it('Autorisation with correct login name and password', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/');
+        cy.visit('/');
 
         cy.log('Check user is unauthorized');
         cy.getCookie('customer').should('be.null');
@@ -24,7 +24,7 @@ describe('Autorisation User', () => {
     it('Autorisation without login name and password', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if field login name and pasword are empty**');
         cy.get('[title="Login"]').click();
@@ -38,7 +38,7 @@ describe('Autorisation User', () => {
     it('Autorisation with incorret login name and password', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if field login name and pasword have incorrect data**');
         cy.get('#loginFrm_loginname').type(user.userNameInCorect);
@@ -54,7 +54,7 @@ describe('Autorisation User', () => {
     it('Autorisation without login name', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if field login name is empty**');
         cy.get('#loginFrm_loginname').type(user.userName);
@@ -68,7 +68,7 @@ describe('Autorisation User', () => {
     it('Autorisation without password', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if field password is empty**');
         cy.get('#loginFrm_password').type(user.password);
@@ -82,7 +82,7 @@ describe('Autorisation User', () => {
     it('Autorisation with incorret loginName', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if field login name has incorrect data**');
         cy.get('#loginFrm_loginname').type(user.userNameInCorect);
@@ -97,7 +97,7 @@ describe('Autorisation User', () => {
     it('Autorisation with incorret password', () => {
 
         cy.log('**Open website login page**');
-        cy.visit('https://automationteststore.com/index.php?rt=account/login');
+        cy.visit('/index.php?rt=account/login');
 
         cy.log('**Error message appears if pasword has incorrect data**');
         cy.get('#loginFrm_password').type(user.passwordIncorrect);
