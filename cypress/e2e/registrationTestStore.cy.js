@@ -17,7 +17,7 @@ describe('Registration and Login', () => {
     it.skip('Registration', () => {
 
         cy.log('**Open website home page**');
-        cy.visit('https://automationteststore.com/');
+        cy.visit('/');
 
         cy.log('Open website login page');
         cy.get('#customer_menu_top').click();
@@ -54,7 +54,7 @@ describe('Registration and Login', () => {
         cy.get('.btn.btn-default.mr10').click();
         
 
-        cy.log('Verify user first name on account page');
+        cy.log('**Verify user first name on account page**');
         cy.get('h1 span.subtext').should('contain', user.firstName);
 
         console.log(user)
@@ -64,7 +64,7 @@ describe('Registration and Login', () => {
     it('Autorisation', () => {
 
         cy.log('Open website login page');
-        cy.visit('https://automationteststore.com/');
+        cy.visit('/');
 
         cy.log('Check user is unauthorized');
         cy.getCookie('customer').should('be.null');

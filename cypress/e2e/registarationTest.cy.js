@@ -1,5 +1,5 @@
 it('Registration', () => {
-    cy.visit('https://automationteststore.com/');
+    cy.visit('/');
 
     cy.get('.topnavbar [data-id="menu_account"]').click();
     cy.get('#accountFrm button').click();
@@ -34,7 +34,7 @@ it('Registration', () => {
 it('Authorization', () => {
 
     cy.log('Open website login page');
-    cy.visit('https://automationteststore.com/index.php?rt=account/login');
+    cy.visit('/index.php?rt=account/login');
 
     cy.log('Check user is unauthorized');
     cy.getCookie('customer').should('be.null');
