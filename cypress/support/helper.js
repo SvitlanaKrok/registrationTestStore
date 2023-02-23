@@ -1,15 +1,3 @@
-export function loginViaUI(user){
-    cy.log('**Open website login page**');
-    cy.visit('/'); 
-
-    cy.log('**Authorize user**');
-    cy.get('#customer_menu_top').click();
-    cy.get('#loginFrm_loginname').type(user.userName);
-    cy.get('#loginFrm_password').type(user.password);
-    cy.get('[title="Login"]').click();
-    cy.get('h1 span.subtext').should('contain', user.firstName);
-}
-
 export function headlessLogin(user){
     let csrfToken;
     let csrfInstance;
@@ -35,25 +23,29 @@ export function headlessLogin(user){
             form: true
         })
     })
-
  
 }
- /*export function someLoginViaAPI(){
-       let token; 
-    cy.request ({
-        method: 'POST',
-        url:'/index.php?rt=account/login',
-        body: {
-            loginname: user.userName,
-            password: user.password
-            }
-    }).then ( responce => {
-        token = responce.body.token // якщо токен десь використовується записуємо його в змінну
-        // з цього викор. тільки щось одне залежить де лежать наш токен
-        cy.getCookie('token', responce.body.token)//так записуємо, якщо токен більше ніде не використ
-        window.localStorage.setItem('token', responce.body.token);
-        window.sessionStorage.setItem('token', responce.body.token);
+
+function isProductDisplayed(productName) {
+    return Cypress.$(`.thumbnails.grid:contains('${productName}')`).length > 0;
+}
+
+function isNextPageAvailable() {
+    return Cypress.$(".pagination li a:contains('>')").length > 0;
+}
+
+export function searchProduct(productName) {
+    cy.get('body').then((body) => { // почекати, щоб body завантажилось
+        if (isProductDisplayed(productName)) {
+            cy.get('.thumbnails.grid').contains(productName).click();
+        } else if (isNextPageAvailable()) {
+            cy.get('.pagination li a').contains('>').click();
+            searchProduct(productName);
+        }
     })
- }*/
+}
+
+
+
 
 
