@@ -12,8 +12,6 @@ user.postCode =faker.address.zipCode('####');
 user.userName = faker.internet.userName();
 user.password = faker.internet.password(15);*/
 
-describe('Registration and Login', () => {
-
     it.skip('Registration', () => {
 
         cy.log('**Open website home page**');
@@ -78,7 +76,6 @@ describe('Registration and Login', () => {
         cy.get('h1 span.subtext').should('contain', user.firstName)
     })
 
-})
 
 
 
