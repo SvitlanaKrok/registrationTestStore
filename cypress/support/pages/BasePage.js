@@ -1,7 +1,7 @@
 export default class BasePage{
 
     searchField(){
-        returncy.get('#filter_keyword');
+        return cy.get('#filter_keyword');
     }
 
 }
